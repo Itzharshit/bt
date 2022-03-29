@@ -44,6 +44,10 @@ async def remt(event):
   
 @Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
-    text = "Send me Link of any message to clone it here, For private channel message, send invite link first."
-    
+    await event.reply(f'{st}', 
+                      buttons=[
+                        [Button.url("Updates Channel", url="https://t.me/pyrogrammers"),
+                         Button.url("Support Group", url="https://t.me/+7ScFy39Vckk5MWQ1")],
+                        [Button.url("YouTube Channel", url="https://youtube.com/channel/UC2anvk7MNeNzJ6B4c0SZepw")],
+                    ])
     

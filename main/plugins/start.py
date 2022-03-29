@@ -44,7 +44,7 @@ async def remt(event):
   
 @Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
-    await event.reply(f'{st}', 
+    await event.reply(f'hi', 
                       buttons=[
                         [Button.url("Updates Channel", url="https://t.me/pyrogrammers"),
                          Button.url("Support Group", url="https://t.me/+7ScFy39Vckk5MWQ1")],

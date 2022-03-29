@@ -56,7 +56,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i):
                     await client.send_message(sender, msg.text.markdown)
                     await edit.delete()
                     return
-            edit = await client.edit_message_text(sender, edit_id, "Trying to Download.")
+            edit = await client.edit_message_text(sender, edit_id, "Downloading")
             file = await userbot.download_media(
                 msg,
                 progress=progress_for_pyrogram,
@@ -130,5 +130,5 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i):
         await edit.delete()
         
 async def get_bulk_msg(userbot, client, sender, msg_link, i):
-    x = await client.send_message(sender, "Please wait...")
+    x = await client.send_message(sender, "Processing!")
     await get_msg(userbot, client, sender, x.message_id, msg_link, i) 

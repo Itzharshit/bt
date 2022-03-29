@@ -36,10 +36,7 @@ async def _batch(event):
         return
     # wtf is the use of fsub here if the command is meant for the owner? 
     # well am too lazy to clean 
-    s, r = await force_sub(event.client, fs, event.sender_id, ft) 
-    if s == True:
-        await event.reply(r)
-        return       
+    
     if f'{event.sender_id}' in batch:
         return await event.reply("You've already started one batch, wait for it to complete you dumbfuck owner!")
     async with Drone.conversation(event.chat_id) as conv: 

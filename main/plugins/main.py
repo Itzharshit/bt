@@ -32,7 +32,7 @@ async def clone(event):
     except TypeError:
         return
     
-    edit = await event.reply("Processing!")
+    edit = await event.reply("⏳")
     if 't.me/+' in link:
         q = await join(userbot, link)
         await edit.edit(q)

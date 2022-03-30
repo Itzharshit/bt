@@ -46,10 +46,11 @@ async def remt(event):
 async def start(event):
     await event.reply(f'hi', 
                       buttons=[
+                        [Button.inline("Set thumbnail", data="set"),
+                         Button.inline("Delete thumbnail", data="rem")],
                         [Button.url("Updates Channel", url="https://t.me/pyrogrammers"),
                          Button.url("Support Group", url="https://t.me/+7ScFy39Vckk5MWQ1")],
-                        [Button.inline("Set thumb", data="set"),
-                         Button.inline("Delete thumb", data="rem")],
+                       
                         [Button.url("YouTube Channel", url="https://youtube.com/channel/UC2anvk7MNeNzJ6B4c0SZepw")],
                     ])
     

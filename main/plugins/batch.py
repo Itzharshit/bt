@@ -59,8 +59,8 @@ async def _batch(event):
                 return await conv.send_message("Cannot wait more longer for your response!")
             try:
                 value = int(_range.text)
-                if value > 100:
-                    return await conv.send_message("You can only get upto 100 files in a single batch.")
+                if value > 400
+                    return await conv.send_message("You can only get upto 400 files in a single batch.")
             except ValueError:
                 return await conv.send_message("Range must be an integer!")
             s, r = await check(userbot, Bot, _link)
@@ -92,7 +92,7 @@ async def run_batch(userbot, client, sender, link, _range):
         except FloodWait as fw:
             await asyncio.sleep(fw.seconds + 5)
             await get_bulk_msg(userbot, client, sender, link, i)
-        protection = await client.send_message(sender, f"Sleeping for `{timer}` seconds to avoid Floodwaits and Protect account!")
+        protection = await client.send_message(sender, f"Sending Next File In `{timer}` ")
         time.sleep(timer)
         await protection.delete()
             

@@ -92,7 +92,7 @@ async def run_batch(userbot, client, sender, link, _range):
         except FloodWait as fw:
             await asyncio.sleep(fw.seconds + 5)
             await get_bulk_msg(userbot, client, sender, link, i)
-        protection = await client.send_message(sender, f"Sending Next File In `{timer}` ")
+        protection = await client.send_message(sender, f"Sending Next File In `{timer}` seconds.")
         time.sleep(timer)
         await protection.delete()
             

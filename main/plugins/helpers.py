@@ -16,7 +16,7 @@ async def join(client, invite_link):
     except UserAlreadyParticipant:
         return "I have already joined this channel."
     except (InviteHashInvalid, InviteHashExpired):
-        return "Unable to join your channel, think your link is invalid or expired."
+        return "Unable to join your channel, I think your link is invalid or expired."
     except FloodWait:
         return "FloodWait error, please try again later."
     except Exception as e:

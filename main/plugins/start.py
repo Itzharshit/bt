@@ -53,4 +53,9 @@ async def start(event):
                        
                         [Button.url("YouTube Channel", url="https://youtube.com/channel/UC2anvk7MNeNzJ6B4c0SZepw")],
                     ])
-    
+    # start help Message
+@Drone.on(events.NewMessage(pattern="^/help$"))
+async def search(event):
+    await event.reply('<b><u>For Public Restricted Channel contents.</b></u>\nTo get public restricted Channel contents, just send your Post link i will give you that post without Downloading.\n\n<b><u>For Private Restricted Channel contents.</b></u>\nTo get private restricted Channel contents, First send me Channel invite link so that i can join your channel after that send me post link of your restricted Channel to get that post.', parse_mode="HTML")
+#end help Message
+

@@ -25,16 +25,16 @@ async def check(userbot, client, link):
             await userbot.get_messages(chat, msg_id)
             return True, None
         except ValueError:
-            return False, "**Invalid Link!**"
+            return False, "Link is invalid."
         except Exception:
-            return False, "Have you joined the channel?"
+            return False, "Send invite link first."
     else:
         try:
             chat = str(link.split("/")[-2])
             await client.get_messages(chat, msg_id)
             return True, None
         except Exception:
-            return False, "Maybe bot is banned from the chat, or your link is invalid!"
+            return False, "Bot is banned from channel or your link is invalid."
             
 async def get_msg(userbot, client, sender, edit_id, msg_link, i):
     edit = ""
@@ -114,7 +114,7 @@ async def get_msg(userbot, client, sender, edit_id, msg_link, i):
                 )
             await edit.delete()
         except (ChannelBanned, ChannelInvalid, ChannelPrivate, ChatIdInvalid, ChatInvalid):
-            await client.edit_message_text(sender, edit_id, "Have you joined the channel?")
+            await client.edit_message_text(sender, edit_id, "Send invite link first.")
             return 
         except Exception as e:
             await client.edit_message_text(sender, edit_id, f'Failed to save: `{msg_link}`')

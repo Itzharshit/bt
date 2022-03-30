@@ -44,7 +44,8 @@ async def remt(event):
   
 @Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
-    await event.reply(f'hi', 
+    await event.reply(f'Hii,
+I am @pyrogrammers save restricted contents bot, I can save files of restricted channels as well as group. **Hit /help to learn more.**', 
                       buttons=[
                         [Button.inline("Set thumbnail", data="set"),
                          Button.inline("Delete thumbnail", data="rem")],

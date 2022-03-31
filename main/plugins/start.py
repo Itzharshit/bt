@@ -12,8 +12,7 @@ S = '/' + 's' + 't' + 'a' + 'r' + 't'
 async def sett(event):    
     Drone = event.client                    
     
-    msg = await button.get_reply_message() 
-    await event.delete()
+    
     async with Drone.conversation(event.chat_id) as conv: 
         xx = await conv.send_message("Send me any image for thumbnail as a `reply` to this message.")
         x = await conv.get_reply()

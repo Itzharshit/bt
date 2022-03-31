@@ -8,7 +8,7 @@ from ethon.mystarts import start_srb
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
 
-@Drone.on(events.NewMessage(pattern="^/set$"))
+@Drone.on(events.NewMessage(pattern="^/thumb$"))
 async def sett(event):    
     Drone = event.client                    
     
@@ -31,22 +31,11 @@ async def sett(event):
         os.rename(path, f'./{event.sender_id}.jpg')
         await t.edit("Temporary thumbnail saved!")
         
-@Drone.on(events.NewMessage(pattern="^/rem$"))
-async def remt(event):  
-    Drone = event.client            
-    
-    try:
-        os.remove(f'{event.sender_id}.jpg')
-        await event.edit('Removed!')
-    except Exception:
-        await event.edit("No thumbnail saved.")                        
-  
+
 @Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
     await event.reply(f'Hii,\nI am @pyrogrammers save restricted contents bot, I can save files of restricted channels as well as group.\n**Hit /help to learn more.**', 
                       buttons=[
-                        [Button.inline("Set thumbnail", data="set"),
-                         Button.inline("Delete thumbnail", data="rem")],
                         [Button.url("Updates Channel", url="https://t.me/pyrogrammers"),
                          Button.url("Support Group", url="https://t.me/+7ScFy39Vckk5MWQ1")],
                        

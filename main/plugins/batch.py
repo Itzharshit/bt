@@ -30,7 +30,7 @@ async def get_pvt_content(event, chat, id):
     msg = await userbot.get_messages(chat, ids=id)
     await event.client.send_message(event.chat_id, msg) 
     
-@Drone.on(events.NewMessage(incoming=True, from_users=AUTH, pattern='/batch'))
+@Drone.on(events.NewMessage(incoming=True, from_users=AUTH, pattern='/bulk'))
 async def _batch(event):
     if not event.is_private:
         return
@@ -51,7 +51,7 @@ async def _batch(event):
             except Exception as e:
                 print(e)
                 return await conv.send_message("Timed out!")
-            await conv.send_message("Send me the message link from where you want to initialise bulk saving.", buttons=Button.force_reply())
+            await conv.send_message("Send me the range in number of files that you want to save.", buttons=Button.force_reply())
             try:
                 _range = await conv.get_reply()
             except Exception as e:

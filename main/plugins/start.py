@@ -3,11 +3,24 @@
 import os
 from .. import bot as Drone
 from telethon import events, Button
-
+#What the hell is it??
+from telethon.tl.functions.users import GetFullUserRequest
+from telethon.errors.rpcerrorlist import UserNotParticipantError
+from telethon.tl.functions.channels import GetParticipantRequest
+#end
 from ethon.mystarts import start_srb
     
 S = '/' + 's' + 't' + 'a' + 'r' + 't'
-
+#join check
+async def check_user(id):
+    ok = True
+    try:
+        await bot(GetParticipantRequest(channel='@pyrogrammers', participant=id))
+        ok = True
+    except UserNotParticipantError:
+        ok = False
+    return ok
+#end
 @Drone.on(events.NewMessage(pattern="^/thumb$"))
 async def sett(event):    
     Drone = event.client                    
@@ -34,6 +47,9 @@ async def sett(event):
 
 @Drone.on(events.NewMessage(incoming=True, pattern=f"{S}"))
 async def start(event):
+    ok = await bot(GetFullUserRequest(event.sender_id))
+    if (await check_user(event.sender_id)) == False:
+        return await event.reply(f"{ok.user.first_name}, please join my channel to use me!", buttons=[Button.url("Join Channel", url="https://t.me/pyrogrammers")])
     await event.reply(f'Hii,\nI am @pyrogrammers save restricted contents bot, I can save files of restricted channels as well as group.\n**Hit /help to learn more.**', 
                       buttons=[
                         [Button.url("Updates Channel", url="https://t.me/pyrogrammers"),
@@ -44,6 +60,9 @@ async def start(event):
     # start help Message
 @Drone.on(events.NewMessage(pattern="^/help$"))
 async def search(event):
-    await event.reply('<b><u>For Public Restricted Channel contents.</b></u>\nTo get public restricted Channel contents, just send your Post link i will give you that post without Downloading.\n\n<b><u>For Private Restricted Channel contents.</b></u>\nTo get private restricted Channel contents, First send me Channel invite link so that i can join your channel after that send me post link of your restricted Channel to get that post.', parse_mode="HTML")
+     ok = await bot(GetFullUserRequest(event.sender_id))
+     if (await check_user(event.sender_id)) == False:
+        return await event.reply(f"{ok.user.first_name}, please join my channel to use me!", buttons=[Button.url("Join Channel", url="https://t.me/pyrogrammers")])
+     await event.reply('<b><u>For Public Restricted Channel contents.</b></u>\nTo get public restricted Channel contents, just send your Post link i will give you that post without Downloading.\n\n<b><u>For Private Restricted Channel contents.</b></u>\nTo get private restricted Channel contents, First send me Channel invite link so that i can join your channel after that send me post link of your restricted Channel to get that post.', parse_mode="HTML")
 #end help Message
 

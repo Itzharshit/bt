@@ -11,7 +11,7 @@ S = '/' + 's' + 't' + 'a' + 'r' + 't'
 @Drone.on(events.NewMessage(pattern="^/set$"))
 async def sett(event):    
     Drone = event.client                    
-    button = await event.get_message()
+    
     msg = await button.get_reply_message() 
     await event.delete()
     async with Drone.conversation(event.chat_id) as conv: 

@@ -51,7 +51,7 @@ async def _batch(event):
             except Exception as e:
                 print(e)
                 return await conv.send_message("Timed out!")
-            await conv.send_message("Send me the range in number of files that you want to save.", buttons=Button.force_reply())
+            await conv.send_message("Send the number of files that you want to save upto 400.", buttons=Button.force_reply())
             try:
                 _range = await conv.get_reply()
             except Exception as e:

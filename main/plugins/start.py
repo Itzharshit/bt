@@ -15,7 +15,7 @@ S = '/' + 's' + 't' + 'a' + 'r' + 't'
 async def check_user(id):
     ok = True
     try:
-        await bot(GetParticipantRequest(channel='@pyrogrammers', participant=id))
+        await Drone(GetParticipantRequest(channel='@pyrogrammers', participant=id))
         ok = True
     except UserNotParticipantError:
         ok = False

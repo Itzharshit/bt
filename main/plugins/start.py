@@ -31,10 +31,10 @@ async def sett(event):
         os.rename(path, f'./{event.sender_id}.jpg')
         await t.edit("Temporary thumbnail saved!")
         
-@Drone.on(events.callbackquery.CallbackQuery(data="rem"))
+@Drone.on(events.NewMessage(pattern="^/rem$"))
 async def remt(event):  
     Drone = event.client            
-    await event.edit('Trying.')
+    await event.reply('Trying.')
     try:
         os.remove(f'{event.sender_id}.jpg')
         await event.edit('Removed!')

@@ -38,31 +38,31 @@ async def _batch(event):
     # well am too lazy to clean 
     
     if f'{event.sender_id}' in batch:
-        return await event.reply("You've already started one batch, wait for it to complete you dumbfuck owner!")
+        return await event.reply("One bulk saving is already going on.")
     async with Drone.conversation(event.chat_id) as conv: 
        
-            await conv.send_message("Send me the message link you want to start saving from, as a reply to this message.", buttons=Button.force_reply())
+            await conv.send_message("Send me the message link from where you want to initialise bulk saving.", buttons=Button.force_reply())
             try:
                 link = await conv.get_reply()
                 try:
                     _link = get_link(link.text)
                 except Exception:
-                    await conv.send_message("No link found.")
+                    await conv.send_message("⚠️No valid link found.")
             except Exception as e:
                 print(e)
-                return await conv.send_message("Cannot wait more longer for your response!")
-            await conv.send_message("Send me the number of files/range you want to save from the given message, as a reply to this message.", buttons=Button.force_reply())
+                return await conv.send_message("Timed out!")
+            await conv.send_message("Send me the message link from where you want to initialise bulk saving.", buttons=Button.force_reply())
             try:
                 _range = await conv.get_reply()
             except Exception as e:
                 print(e)
-                return await conv.send_message("Cannot wait more longer for your response!")
+                return await conv.send_message("Timed out!")
             try:
                 value = int(_range.text)
                 if value > 400:
-                    return await conv.send_message("You can only get upto 400 files in a single batch.")
+                    return await conv.send_message("You can only get upto 400 files in a single bulk save.")
             except ValueError:
-                return await conv.send_message("Range must be an integer!")
+                return await conv.send_message("Please send only number!")
             s, r = await check(userbot, Bot, _link)
             if s != True:
                 await conv.send_message(r)

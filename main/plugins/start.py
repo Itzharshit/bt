@@ -34,7 +34,7 @@ async def sett(event):
 @Drone.on(events.NewMessage(pattern="^/rem$"))
 async def remt(event):  
     Drone = event.client            
-    await event.reply('Trying.')
+    
     try:
         os.remove(f'{event.sender_id}.jpg')
         await event.edit('Removed!')
